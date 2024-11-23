@@ -2,9 +2,10 @@ package util
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
 	"math"
 	"sort"
+
+	"github.com/EvATive7/mahjong-helper/util/model"
 )
 
 // map[改良牌]进张（选择进张数最大的）

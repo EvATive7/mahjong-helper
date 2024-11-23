@@ -1,14 +1,15 @@
 package main
 
 import (
-	"strings"
-	"strconv"
 	"fmt"
-	"regexp"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
-	"sort"
-	"github.com/EndlessCheng/mahjong-helper/util"
 	"net/url"
+	"regexp"
+	"sort"
+	"strconv"
+	"strings"
+
+	"github.com/EvATive7/mahjong-helper/util"
+	"github.com/EvATive7/mahjong-helper/util/model"
 	"github.com/fatih/color"
 )
 
@@ -253,26 +254,27 @@ func (d *tenhouRoundData) _parseTenhouTile(tenhouTile string) (tile int, isRedFi
 /*
 CHI
 
- 0                   1
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+	0                   1
+	0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 | Base Tile | |   |   |   | |   |
 |    and    |0| T2| T1| T0|1|Who|
 |Called Tile| |   |   |   | |   |
 +-----------+-+---+---+---+-+---+
 
-    Base Tile and Called Tile:
-        ((Base / 9) * 7 + Base % 9) * 3 + Chi
-    T[0-2]:
-        Tile[i] - 4 * i - Base * 4
-    Who:
-        Offset of player the tile was called from.
-    Tile[0-2]:
-        The tiles in the chi.
-    Base:
-        The lowest tile in the chi / 4.
-    Called:
-        Which tile out of the three was called.
+	Base Tile and Called Tile:
+	    ((Base / 9) * 7 + Base % 9) * 3 + Chi
+	T[0-2]:
+	    Tile[i] - 4 * i - Base * 4
+	Who:
+	    Offset of player the tile was called from.
+	Tile[0-2]:
+	    The tiles in the chi.
+	Base:
+	    The lowest tile in the chi / 4.
+	Called:
+	    Which tile out of the three was called.
 */
 func (*tenhouRoundData) _parseChi(data int) (meldType int, tenhouMeldTiles []int, tenhouCalledTile int) {
 	// 吃
@@ -289,30 +291,31 @@ func (*tenhouRoundData) _parseChi(data int) (meldType int, tenhouMeldTiles []int
 /*
 PON or KAKAN
 
- 0                   1
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+	0                   1
+	0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |  Base Tile  |   |   |K|P| |   |
 |     and     | 0 | T4|A|O|0|Who|
 | Called Tile |   |   |N|N| |   |
 +---------------+-+---+-+-+-+---+
 
-    Base Tile and Called Tile:
-        Base * 3 + Called
-    T4:
-        Tile4 - Base * 4
-    PON:
-        Set iff the meld is a pon.
-    KAN:
-        Set iff the meld is a pon upgraded to a kan.
-    Who:
-        Offset of player the tile was called from.
-    Tile4:
-        The tile which is not part of the pon.
-    Base:
-        A tile in the pon / 4.
-    Called:
-        Which tile out of the three was called.
+	Base Tile and Called Tile:
+	    Base * 3 + Called
+	T4:
+	    Tile4 - Base * 4
+	PON:
+	    Set iff the meld is a pon.
+	KAN:
+	    Set iff the meld is a pon upgraded to a kan.
+	Who:
+	    Offset of player the tile was called from.
+	Tile4:
+	    The tile which is not part of the pon.
+	Base:
+	    A tile in the pon / 4.
+	Called:
+	    Which tile out of the three was called.
 */
 func (*tenhouRoundData) _parsePonOrKakan(data int) (meldType int, tenhouMeldTiles []int, tenhouCalledTile int) {
 	t4 := (data >> 5) & 0x3
@@ -337,22 +340,23 @@ func (*tenhouRoundData) _parsePonOrKakan(data int) (meldType int, tenhouMeldTile
 /*
 KAN
 
- 0                   1
- 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+	0                   1
+	0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |   Base Tile   |           |   |
 |      and      |     0     |Who|
 |   Called Tile |           |   |
 +---------------+-+---+-+-+-+---+
 
-    Base Tile and Called Tile:
-        Base * 4 + Called
-    Who:
-        Offset of player the tile was called from or 0 for a closed kan.
-    Base:
-        A tile in the kan / 4.
-    Called:
-        Which tile out of the four was called.
+	Base Tile and Called Tile:
+	    Base * 4 + Called
+	Who:
+	    Offset of player the tile was called from or 0 for a closed kan.
+	Base:
+	    A tile in the kan / 4.
+	Called:
+	    Which tile out of the four was called.
 */
 func (*tenhouRoundData) _parseKan(data int) (meldType int, tenhouMeldTiles []int, tenhouCalledTile int) {
 	baseAndCalled := data >> 8

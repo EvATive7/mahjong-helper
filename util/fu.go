@@ -1,7 +1,7 @@
 package util
 
 import (
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+	"github.com/EvATive7/mahjong-helper/util/model"
 )
 
 func roundUpFu(fu int) int {

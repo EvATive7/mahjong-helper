@@ -3,7 +3,7 @@ package api
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/proto/lq"
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/proto/lq"
 )
 
 func (c *WebSocketClient) AuthGame(req *lq.ReqAuthGame) (resp *lq.ResAuthGame, err error) {

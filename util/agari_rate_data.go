@@ -12,7 +12,7 @@ var (
 	// TODO: 基于巡目的和了率数据
 	// TODO: 考虑读山的和了率？
 	// TODO: 早外、NC、其他场况（其他家不要的牌）
-	// https://github.com/EndlessCheng/mahjong-helper/issues/46
+	// https://github.com/EvATive7/mahjong-helper/issues/46
 
 	// 数牌和率
 	// 6~10巡目 [牌0-4][剩余数]

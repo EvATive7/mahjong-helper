@@ -3,12 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
-	"github.com/fatih/color"
 	"math/rand"
 	"strings"
 	"time"
+
+	"github.com/EvATive7/mahjong-helper/util"
+	"github.com/EvATive7/mahjong-helper/util/model"
+	"github.com/fatih/color"
 )
 
 var (
@@ -72,9 +73,9 @@ var platforms = map[int][]string{
 	},
 }
 
-const readmeURL = "https://github.com/EndlessCheng/mahjong-helper/blob/master/README.md"
-const issueURL = "https://github.com/EndlessCheng/mahjong-helper/issues"
-const issueCommonQuestions = "https://github.com/EndlessCheng/mahjong-helper/issues/104"
+const readmeURL = "https://github.com/EvATive7/mahjong-helper/blob/master/README.md"
+const issueURL = "https://github.com/EvATive7/mahjong-helper/issues"
+const issueCommonQuestions = "https://github.com/EvATive7/mahjong-helper/issues/104"
 const qqGroupNum = "375865038"
 
 func welcome() int {
@@ -124,7 +125,7 @@ func welcome() int {
 func main() {
 	flag.Parse()
 
-	color.HiGreen("日本麻将助手 %s (by EndlessCheng)", version)
+	color.HiGreen("日本麻将助手 %s (by EvATive7)", version)
 	if version != versionDev {
 		go checkNewVersion(version)
 	}

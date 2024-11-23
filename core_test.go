@@ -1,12 +1,13 @@
 package main
 
 import (
-	"testing"
+	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"strings"
-	"fmt"
-	"encoding/json"
-	"github.com/EndlessCheng/mahjong-helper/util/debug"
+	"testing"
+
+	"github.com/EvATive7/mahjong-helper/util/debug"
 	"github.com/stretchr/testify/assert"
 )
 

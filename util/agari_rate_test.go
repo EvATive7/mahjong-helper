@@ -2,8 +2,9 @@ package util
 
 import (
 	"testing"
+
+	"github.com/EvATive7/mahjong-helper/util/model"
 	"github.com/stretchr/testify/assert"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
 )
 
 func TestCalculateAvgAgariRate(t *testing.T) {

@@ -1,9 +1,10 @@
 package util
 
 import (
-	"testing"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
 	"fmt"
+	"testing"
+
+	"github.com/EvATive7/mahjong-helper/util/model"
 	"github.com/stretchr/testify/assert"
 )
 

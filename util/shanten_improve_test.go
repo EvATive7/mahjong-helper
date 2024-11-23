@@ -1,10 +1,11 @@
 package util
 
 import (
-	"testing"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
-	"github.com/stretchr/testify/assert"
 	"strings"
+	"testing"
+
+	"github.com/EvATive7/mahjong-helper/util/model"
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_calculateIsolatedTileValue(t *testing.T) {

@@ -5,14 +5,15 @@ import (
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/api"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/proto/lq"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/tool"
-	"github.com/golang/protobuf/proto"
-	"github.com/satori/go.uuid"
 	"io/ioutil"
 	"os"
 	"reflect"
+
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/api"
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/proto/lq"
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/tool"
+	"github.com/golang/protobuf/proto"
+	uuid "github.com/satori/go.uuid"
 )
 
 const (

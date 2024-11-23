@@ -1,8 +1,9 @@
 package util
 
 import (
-	"github.com/EndlessCheng/mahjong-helper/util/model"
 	"sort"
+
+	"github.com/EvATive7/mahjong-helper/util/model"
 )
 
 // 门清限定
@@ -222,7 +223,7 @@ func (hi *_handInfo) _chantai() bool {
 		return false
 	}
 	for _, tile := range shuntsuFirstTiles {
-		if !isYaochupai(tile) && !isYaochupai(tile + 2) {
+		if !isYaochupai(tile) && !isYaochupai(tile+2) {
 			return false
 		}
 	}
