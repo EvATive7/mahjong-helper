@@ -27,7 +27,7 @@ var (
 
 	humanDoraTiles string
 
-	port int
+	addr string
 )
 
 func init() {
@@ -48,8 +48,7 @@ func init() {
 	flag.BoolVar(&showAllYakuTypes, "y", false, "同 -yaku")
 	flag.StringVar(&humanDoraTiles, "dora", "", "指定哪些牌是宝牌")
 	flag.StringVar(&humanDoraTiles, "d", "", "同 -dora")
-	flag.IntVar(&port, "port", 12121, "指定服务端口")
-	flag.IntVar(&port, "p", 12121, "同 -port")
+	flag.StringVar(&addr, "addr", "localhost:12121", "指定ws分发端点")
 }
 
 const (
@@ -141,9 +140,9 @@ func main() {
 	var err error
 	switch {
 	case isMajsoul:
-		err = runServer(true, port)
+		err = runServer(true, addr)
 	case isTenhou || isAnalysis:
-		err = runServer(true, port)
+		err = runServer(true, addr)
 	case isInteractive: // 交互模式
 		err = interact(humanTilesInfo)
 	case len(flag.Args()) > 0: // 静态分析
@@ -151,7 +150,7 @@ func main() {
 	default: // 服务器模式
 		choose := welcome()
 		isHTTPS := choose == platformMajsoul
-		err = runServer(isHTTPS, port)
+		err = runServer(isHTTPS, addr)
 	}
 	if err != nil {
 		errorExit(err)
