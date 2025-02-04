@@ -93,7 +93,7 @@ func welcome() int {
 	}
 
 	choose := defaultPlatform
-	fmt.Scanln(&choose) // 直接回车也无妨
+	//fmt.Scanln(&choose) // 直接回车也无妨
 	platformInfo, ok := platforms[choose]
 	var platformName string
 	if ok {
