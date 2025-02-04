@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -477,19 +478,24 @@ func runServer(isHTTPS bool, addr string) (err error) {
 	}()
 
 	for {
+		log.Printf("Attempting to connect to %s", url)
 		conn, _, err := websocket.DefaultDialer.Dial(url, nil)
 		if err != nil {
+			log.Printf("Failed to connect to %s: %v", url, err)
 			time.Sleep(5 * time.Second)
 			continue
 		}
+		log.Printf("Successfully connected to %s", url)
 
 		for {
 			_, message, err := conn.ReadMessage()
 			if err != nil {
+				log.Printf("Error reading message from %s: %v", url, err)
 				break
 			}
 			majsoulMessageChan <- message
 		}
 		conn.Close()
+		log.Printf("Connection to %s closed", url)
 	}
 }
