@@ -68,6 +68,20 @@
 
 终端有个小 bug，在使用中若鼠标点击到了空白处，可能会导致终端卡住，此时按下回车键就可以恢复正常。
 
+### 对局记录
+
+助手会将雀魂实时对局保存到当前目录的 `records` 文件夹。可通过 `-record-dir` 指定其他文件夹：
+
+```shell
+mahjong-helper -record-dir D:\mahjong-records
+```
+
+每场对局保存为独立的 `YYYYMMDD_HHMM_场次ID.jsonl` 文件。每行包含接收来源、Unix 毫秒时间戳和原始 WebSocket payload：
+
+```json
+{"type":"websocket","time":1787961001123,"payload":{}}
+```
+
 
 ## 示例
 

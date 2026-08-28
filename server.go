@@ -7,7 +7,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"path/filepath"
 	"time"
 
 	"github.com/EvATive7/mahjong-helper/platform/tenhou"
@@ -19,16 +18,6 @@ import (
 )
 
 const defaultPort = 12121
-
-func newLogFilePath() (filePath string, err error) {
-	const logDir = "log"
-	if err = os.MkdirAll(logDir, os.ModePerm); err != nil {
-		return
-	}
-	fileName := fmt.Sprintf("gamedata-%s.log", time.Now().Format("20060102-150405"))
-	filePath = filepath.Join(logDir, fileName)
-	return filepath.Abs(filePath)
-}
 
 type mjHandler struct {
 	analysing bool
@@ -454,8 +443,13 @@ func getMajsoulCurrentRecordUUID() string {
 	return h.majsoulCurrentRecordUUID
 }
 
-func runServer(isHTTPS bool, addr string) (err error) {
+func runServer(isHTTPS bool, addr string, recordDir string) (err error) {
 	url := "ws://" + addr
+	recorder, err := newMatchRecorder(recordDir)
+	if err != nil {
+		return err
+	}
+	defer recorder.close()
 
 	h := &mjHandler{
 		tenhouMessageReceiver: tenhou.NewMessageReceiver(),
@@ -488,10 +482,13 @@ func runServer(isHTTPS bool, addr string) (err error) {
 		log.Printf("Successfully connected to %s", url)
 
 		for {
-			_, message, err := conn.ReadMessage()
+			messageType, message, err := conn.ReadMessage()
 			if err != nil {
 				log.Printf("Error reading message from %s: %v", url, err)
 				break
+			}
+			if messageType == websocket.TextMessage {
+				_ = recorder.accept(message, time.Now())
 			}
 			majsoulMessageChan <- message
 		}

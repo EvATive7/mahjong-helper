@@ -27,7 +27,8 @@ var (
 
 	humanDoraTiles string
 
-	addr string
+	addr      string
+	recordDir string
 )
 
 func init() {
@@ -49,6 +50,7 @@ func init() {
 	flag.StringVar(&humanDoraTiles, "dora", "", "指定哪些牌是宝牌")
 	flag.StringVar(&humanDoraTiles, "d", "", "同 -dora")
 	flag.StringVar(&addr, "addr", "localhost:12121", "指定ws分发端点")
+	flag.StringVar(&recordDir, "record-dir", "records", "指定对局记录保存目录")
 }
 
 const (
@@ -140,9 +142,9 @@ func main() {
 	var err error
 	switch {
 	case isMajsoul:
-		err = runServer(true, addr)
+		err = runServer(true, addr, recordDir)
 	case isTenhou || isAnalysis:
-		err = runServer(true, addr)
+		err = runServer(true, addr, recordDir)
 	case isInteractive: // 交互模式
 		err = interact(humanTilesInfo)
 	case len(flag.Args()) > 0: // 静态分析
@@ -150,7 +152,7 @@ func main() {
 	default: // 服务器模式
 		choose := welcome()
 		isHTTPS := choose == platformMajsoul
-		err = runServer(isHTTPS, addr)
+		err = runServer(isHTTPS, addr, recordDir)
 	}
 	if err != nil {
 		errorExit(err)
