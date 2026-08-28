@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util"
+
+	"github.com/EvATive7/mahjong-helper/util"
 	"github.com/fatih/color"
 )
 
@@ -10,8 +11,8 @@ type analysisOpType int
 
 const (
 	analysisOpTypeTsumo     analysisOpType = iota
-	analysisOpTypeChiPonKan  // 吃 碰 明杠
-	analysisOpTypeKan        // 加杠 暗杠
+	analysisOpTypeChiPonKan                // 吃 碰 明杠
+	analysisOpTypeKan                      // 加杠 暗杠
 )
 
 // TODO: 提醒「此处应该副露，不应跳过」

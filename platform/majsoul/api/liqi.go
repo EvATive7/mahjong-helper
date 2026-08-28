@@ -3,15 +3,16 @@ package api
 import (
 	"encoding/binary"
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/proto/lq"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/tool"
-	"github.com/golang/protobuf/proto"
-	"github.com/gorilla/websocket"
 	"net/http"
 	"os"
 	"reflect"
 	"sync"
 	"time"
+
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/proto/lq"
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/tool"
+	"github.com/golang/protobuf/proto"
+	"github.com/gorilla/websocket"
 )
 
 const (

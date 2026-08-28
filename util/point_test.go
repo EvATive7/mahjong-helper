@@ -2,7 +2,8 @@ package util
 
 import (
 	"testing"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+
+	"github.com/EvATive7/mahjong-helper/util/model"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -120,7 +121,7 @@ func TestCalcRonPointWithHands(t *testing.T) {
 
 	const eps = 1
 
-	first := func(a float64, _ ... interface{}) float64 { return a }
+	first := func(a float64, _ ...interface{}) float64 { return a }
 
 	// 立直时的平均打点
 	newPIWithWaits := func(humanTiles string) (model.PlayerInfo, Waits) {

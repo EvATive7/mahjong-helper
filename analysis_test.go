@@ -2,7 +2,8 @@ package main
 
 import (
 	"testing"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+
+	"github.com/EvATive7/mahjong-helper/util/model"
 )
 
 func TestAnalysis(t *testing.T) {

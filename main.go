@@ -3,12 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
-	"github.com/fatih/color"
 	"math/rand"
 	"strings"
 	"time"
+
+	"github.com/EvATive7/mahjong-helper/util"
+	"github.com/EvATive7/mahjong-helper/util/model"
+	"github.com/fatih/color"
 )
 
 var (
@@ -26,7 +27,7 @@ var (
 
 	humanDoraTiles string
 
-	port int
+	addr string
 )
 
 func init() {
@@ -47,8 +48,7 @@ func init() {
 	flag.BoolVar(&showAllYakuTypes, "y", false, "同 -yaku")
 	flag.StringVar(&humanDoraTiles, "dora", "", "指定哪些牌是宝牌")
 	flag.StringVar(&humanDoraTiles, "d", "", "同 -dora")
-	flag.IntVar(&port, "port", 12121, "指定服务端口")
-	flag.IntVar(&port, "p", 12121, "同 -port")
+	flag.StringVar(&addr, "addr", "localhost:12121", "指定ws分发端点")
 }
 
 const (
@@ -72,9 +72,9 @@ var platforms = map[int][]string{
 	},
 }
 
-const readmeURL = "https://github.com/EndlessCheng/mahjong-helper/blob/master/README.md"
-const issueURL = "https://github.com/EndlessCheng/mahjong-helper/issues"
-const issueCommonQuestions = "https://github.com/EndlessCheng/mahjong-helper/issues/104"
+const readmeURL = "https://github.com/EvATive7/mahjong-helper/blob/master/README.md"
+const issueURL = "https://github.com/EvATive7/mahjong-helper/issues"
+const issueCommonQuestions = "https://github.com/EvATive7/mahjong-helper/issues/104"
 const qqGroupNum = "375865038"
 
 func welcome() int {
@@ -93,7 +93,7 @@ func welcome() int {
 	}
 
 	choose := defaultPlatform
-	fmt.Scanln(&choose) // 直接回车也无妨
+	//fmt.Scanln(&choose) // 直接回车也无妨
 	platformInfo, ok := platforms[choose]
 	var platformName string
 	if ok {
@@ -124,7 +124,7 @@ func welcome() int {
 func main() {
 	flag.Parse()
 
-	color.HiGreen("日本麻将助手 %s (by EndlessCheng)", version)
+	color.HiGreen("日本麻将助手 %s (by EvATive7)", version)
 	if version != versionDev {
 		go checkNewVersion(version)
 	}
@@ -140,9 +140,9 @@ func main() {
 	var err error
 	switch {
 	case isMajsoul:
-		err = runServer(true, port)
+		err = runServer(true, addr)
 	case isTenhou || isAnalysis:
-		err = runServer(true, port)
+		err = runServer(true, addr)
 	case isInteractive: // 交互模式
 		err = interact(humanTilesInfo)
 	case len(flag.Args()) > 0: // 静态分析
@@ -150,7 +150,7 @@ func main() {
 	default: // 服务器模式
 		choose := welcome()
 		isHTTPS := choose == platformMajsoul
-		err = runServer(isHTTPS, port)
+		err = runServer(isHTTPS, addr)
 	}
 	if err != nil {
 		errorExit(err)

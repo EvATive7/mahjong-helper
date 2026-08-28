@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util"
-	"github.com/fatih/color"
 	"math"
 	"sort"
 	"strings"
+
+	"github.com/EvATive7/mahjong-helper/util"
+	"github.com/fatih/color"
 )
 
 func printAccountInfo(accountID int) {

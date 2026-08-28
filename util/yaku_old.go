@@ -1,6 +1,6 @@
 package util
 
-import "github.com/EndlessCheng/mahjong-helper/util/model"
+import "github.com/EvATive7/mahjong-helper/util/model"
 
 // 四副露大吊车，不能有暗杠
 func (hi *_handInfo) shiiaruraotai() bool {

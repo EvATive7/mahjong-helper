@@ -1,11 +1,11 @@
 package tool
 
 import (
-	"testing"
 	"bytes"
 	"fmt"
-	"strings"
 	"io/ioutil"
+	"strings"
+	"testing"
 )
 
 func TestFetchLatestLiqiJson(t *testing.T) {
@@ -41,7 +41,7 @@ package api
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/proto/lq"
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/proto/lq"
 )
 `)
 	for _, service := range c.rpcServiceList {

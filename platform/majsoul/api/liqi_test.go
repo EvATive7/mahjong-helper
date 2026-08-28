@@ -4,12 +4,13 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/proto/lq"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/tool"
-	"github.com/satori/go.uuid"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/proto/lq"
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/tool"
+	uuid "github.com/satori/go.uuid"
 )
 
 func _genReqLogin(t *testing.T) *lq.ReqLogin {

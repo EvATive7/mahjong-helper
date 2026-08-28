@@ -1,4 +1,4 @@
-module github.com/EndlessCheng/mahjong-helper
+module github.com/EvATive7/mahjong-helper
 
 require (
 	github.com/fatih/color v1.9.0

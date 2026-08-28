@@ -1,8 +1,8 @@
 package api
 
 import (
+	"github.com/EvATive7/mahjong-helper/platform/majsoul/proto/lq"
 	"github.com/golang/protobuf/proto"
-	"github.com/EndlessCheng/mahjong-helper/platform/majsoul/proto/lq"
 )
 
 func WrapMessage(name string, message proto.Message) (data []byte, err error) {

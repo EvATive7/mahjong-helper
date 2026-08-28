@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util"
+	"sort"
 	"strconv"
 	"time"
-	"sort"
+
+	"github.com/EvATive7/mahjong-helper/util"
 )
 
 type _majsoulRecordAccount struct {

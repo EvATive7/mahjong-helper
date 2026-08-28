@@ -1,10 +1,11 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
-	"fmt"
-	"encoding/json"
+
 	"github.com/fatih/color"
 )
 
@@ -15,7 +16,7 @@ const versionDev = "dev"
 var version = versionDev
 
 func fetchLatestVersionTag() (latestVersionTag string, err error) {
-	const apiGetLatestRelease = "https://api.github.com/repos/EndlessCheng/mahjong-helper/releases/latest"
+	const apiGetLatestRelease = "https://api.github.com/repos/EvATive7/mahjong-helper/releases/latest"
 	const timeout = 10 * time.Second
 
 	c := &http.Client{Timeout: timeout}
@@ -40,7 +41,7 @@ func fetchLatestVersionTag() (latestVersionTag string, err error) {
 }
 
 func checkNewVersion(currentVersionTag string) {
-	const latestReleasePage = "https://github.com/EndlessCheng/mahjong-helper/releases/latest"
+	const latestReleasePage = "https://github.com/EvATive7/mahjong-helper/releases/latest"
 
 	latestVersionTag, err := fetchLatestVersionTag()
 	if err != nil {

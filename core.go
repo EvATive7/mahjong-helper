@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/util"
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+
+	"github.com/EvATive7/mahjong-helper/util"
+	"github.com/EvATive7/mahjong-helper/util/model"
 	"github.com/fatih/color"
 )
 
@@ -494,12 +495,6 @@ func (d *roundData) analysis() error {
 	}
 
 	if d.parser.SkipMessage() {
-		return nil
-	}
-
-	// 若自家立直，则进入看戏模式
-	// TODO: 见逃判断
-	if !d.parser.IsInit() && !d.parser.IsRoundWin() && !d.parser.IsRyuukyoku() && d.players[0].isReached {
 		return nil
 	}
 

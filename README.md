@@ -31,7 +31,7 @@
 
 分下面几步：
 
-1. 在浏览器地址栏中输入 `chrome://flags/#allow-insecure-localhost`，然后把高亮那一项从「已禁用」改为「已启用」（[若没有该项见此](https://github.com/EndlessCheng/mahjong-helper/issues/108)）。该功能仅限基于 Chrome 内核开发的浏览器。
+1. 在浏览器地址栏中输入 `chrome://flags/#allow-insecure-localhost`，然后把高亮那一项从「已禁用」改为「已启用」（[若没有该项见此](https://github.com/EvATive7/mahjong-helper/issues/108)）。该功能仅限基于 Chrome 内核开发的浏览器。
    
    （不同浏览器/版本的描述可能不一样，如果打开的页面是英文的话，高亮的就是 `Allow invalid certificates for resources loaded from localhost`，把它的 Disabled 改成 Enabled）
    
@@ -41,11 +41,11 @@
    
    若能翻墙请前往 [谷歌商城](https://chrome.google.com/webstore/detail/header-editor/eningockdidmgiojffjmkdblpjocbhgh?hl=zh) 下载该扩展。或者 [从 CRX 安装该扩展](https://www.chromefor.com/header-editor_v4-0-7/)（若无法安装试试 360 浏览器）。
    
-   安装好扩展后点进该扩展的`管理`界面，点击`导入和导出`，在下载规则中填入 `https://endlesscheng.gitee.io/public/mahjong-helper.json`，点击右侧的下载按钮，然后点击下方的`保存`。（如果您是海外用户，请在下载规则中填入 `https://mjhelper.github.io/mahjong-helper.json` 以获得更好的加载速度。）
+   安装好扩展后点进该扩展的`管理`界面，点击`导入和导出`，在下载规则中填入 `https://EvATive7.gitee.io/public/mahjong-helper.json`，点击右侧的下载按钮，然后点击下方的`保存`。（如果您是海外用户，请在下载规则中填入 `https://mjhelper.github.io/mahjong-helper.json` 以获得更好的加载速度。）
 
-3. 前往 [releases](https://github.com/EndlessCheng/mahjong-helper/releases/latest) 页面下载助手。解压到本地后打开。
+3. 前往 [releases](https://github.com/EvATive7/mahjong-helper/releases/latest) 页面下载助手。解压到本地后打开。
 
-4. 如果您的浏览器之前打开过雀魂网页，需要清除缓存：打开雀魂网页，按下 F12，右键地址栏左侧的刷新按钮，选择「清空缓存并进行硬刷新」。如遇问题，请参考 [#104](https://github.com/EndlessCheng/mahjong-helper/issues/104)。
+4. 如果您的浏览器之前打开过雀魂网页，需要清除缓存：打开雀魂网页，按下 F12，右键地址栏左侧的刷新按钮，选择「清空缓存并进行硬刷新」。如遇问题，请参考 [#104](https://github.com/EvATive7/mahjong-helper/issues/104)。
 
 #### 安装完成！在使用助手前，请先阅读本页面下方的[示例](#示例)，以了解助手输出信息的含义。
 
@@ -53,7 +53,7 @@
 
 您也可以选择从源码安装此助手：
 
-`go get -u -v github.com/EndlessCheng/mahjong-helper/...`
+`go get -u -v github.com/EvATive7/mahjong-helper/...`
 
 完成后程序生成于 `$GOPATH/bin/` 目录下。
 
@@ -216,7 +216,7 @@
     
     输入的切牌、摸牌用简写形式，如 `6m`
     
-    [配套小工具](https://github.com/EndlessCheng/mahjong-helper-gui)
+    [配套小工具](https://github.com/EvATive7/mahjong-helper-gui)
 
 - 指出宝牌是哪些（-d 参数，不能有空格）
     
@@ -274,11 +274,11 @@
 
 类似天凤，搜索 `WebSocket` 找到下方的 `_socket.onmessage` 和 `_socket.send`，添加代码。
 
-服务器收到消息后，可以基于 [liqi.json](https://github.com/EndlessCheng/mahjong-helper/blob/master/platform/majsoul/proto/lq/liqi.json) 文件解析雀魂的 protobuf 数据。
+服务器收到消息后，可以基于 [liqi.json](https://github.com/EvATive7/mahjong-helper/blob/master/platform/majsoul/proto/lq/liqi.json) 文件解析雀魂的 protobuf 数据。
 
-[record.go](https://github.com/EndlessCheng/mahjong-helper/blob/master/platform/majsoul/record.go) 展示了使用 WebSocket 登录和下载牌谱的例子。
+[record.go](https://github.com/EvATive7/mahjong-helper/blob/master/platform/majsoul/record.go) 展示了使用 WebSocket 登录和下载牌谱的例子。
 
-考虑到还有观看牌谱这种获取前端 UI 事件的情况，还需修改额外的代码。在网页控制台输入 `GameMgr.inRelease = 0`，开启调试模式，通过雀魂已有的日志可以看到相关代码在哪。具体修改了哪些内容可以对比雀魂的 code.js 和我修改后的 [code-zh.js](https://endlesscheng.gitee.io/public/js/majsoul/code-zh.js)。
+考虑到还有观看牌谱这种获取前端 UI 事件的情况，还需修改额外的代码。在网页控制台输入 `GameMgr.inRelease = 0`，开启调试模式，通过雀魂已有的日志可以看到相关代码在哪。具体修改了哪些内容可以对比雀魂的 code.js 和我修改后的 [code-zh.js](https://EvATive7.gitee.io/public/js/majsoul/code-zh.js)。
 
 
 ## 参与讨论

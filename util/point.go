@@ -1,7 +1,7 @@
 package util
 
 import (
-	"github.com/EndlessCheng/mahjong-helper/util/model"
+	"github.com/EvATive7/mahjong-helper/util/model"
 )
 
 // TODO: 考虑大三元和大四喜的包牌？
